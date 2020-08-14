@@ -45,6 +45,7 @@ class Result extends React.Component {
             })
         } else {
             this.setState({
+                info: null,
                 error: "Город не найден"
             })
         }
