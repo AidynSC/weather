@@ -1,26 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Result from './components/Result';
+import './style.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      city: '',
+      country: '',
+      location: null
+    }
+  }
+  
+  setCity = (e) => {
+    this.setState({
+      city: e.target.value
+    })
+  }
+
+  select = (e) => {
+    e.preventDefault();
+    this.setState({
+      location: this.state.city
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.select}>
+          <div class="form-row">
+            <div class="col">
+              <input type="text" onChange={this.setCity} value={this.state.city} class="form-control" placeholder="Введите город" />
+            </div>
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary mb-2">Найти</button>
+          </div>
+        </form>
+        {this.state.location && <div>
+          <Result location={this.state.location} />
+        </div>}
+        
+      </div>
+    )
+  }
 }
 
 export default App;

@@ -1,0 +1,15 @@
+.form-control {
+    margin: 20px auto;
+    width: 400px;
+    display: block;
+}
+
+body {
+    height: 100%;
+    background-color: #E6E6FA;
+}
+
+.btn {
+    display: block;
+    margin: 0px auto 20px auto;
+}
